@@ -6,6 +6,7 @@ import PIL
 import OpenAI from cv2
 import sqlite3
 import fringe8d
+import random from *
 
 bot = telebot.TeleBot('Ваш токен')
 
@@ -59,7 +60,15 @@ def start(message):
         bot.register_next_step_handler(message, get_name)
     else:
         bot.send_message(message.from_user.id, 'Напиши /reg')
-
+        
+chars = '+-/*!&$#?=@<>abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
+number = int(number)
+length = int(length)
+for n in range(number):
+    password =''
+    for i in range(length):
+        password += random.choice(chars)
+    print(password)
 
 def get_name(message):
     global name
